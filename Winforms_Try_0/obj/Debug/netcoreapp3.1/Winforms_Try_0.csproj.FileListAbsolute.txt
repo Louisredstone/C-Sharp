@@ -1,0 +1,13 @@
+D:\Workspace\Git-Workspace\C-Sharp\Winforms_Try_0\bin\Debug\netcoreapp3.1\Winforms_Try_0.exe
+D:\Workspace\Git-Workspace\C-Sharp\Winforms_Try_0\bin\Debug\netcoreapp3.1\Winforms_Try_0.deps.json
+D:\Workspace\Git-Workspace\C-Sharp\Winforms_Try_0\bin\Debug\netcoreapp3.1\Winforms_Try_0.runtimeconfig.json
+D:\Workspace\Git-Workspace\C-Sharp\Winforms_Try_0\bin\Debug\netcoreapp3.1\Winforms_Try_0.runtimeconfig.dev.json
+D:\Workspace\Git-Workspace\C-Sharp\Winforms_Try_0\bin\Debug\netcoreapp3.1\Winforms_Try_0.dll
+D:\Workspace\Git-Workspace\C-Sharp\Winforms_Try_0\bin\Debug\netcoreapp3.1\Winforms_Try_0.pdb
+D:\Workspace\Git-Workspace\C-Sharp\Winforms_Try_0\obj\Debug\netcoreapp3.1\Winforms_Try_0.csprojAssemblyReference.cache
+D:\Workspace\Git-Workspace\C-Sharp\Winforms_Try_0\obj\Debug\netcoreapp3.1\Winforms_Try_0.AssemblyInfoInputs.cache
+D:\Workspace\Git-Workspace\C-Sharp\Winforms_Try_0\obj\Debug\netcoreapp3.1\Winforms_Try_0.AssemblyInfo.cs
+D:\Workspace\Git-Workspace\C-Sharp\Winforms_Try_0\obj\Debug\netcoreapp3.1\Winforms_Try_0.csproj.CoreCompileInputs.cache
+D:\Workspace\Git-Workspace\C-Sharp\Winforms_Try_0\obj\Debug\netcoreapp3.1\Winforms_Try_0.dll
+D:\Workspace\Git-Workspace\C-Sharp\Winforms_Try_0\obj\Debug\netcoreapp3.1\Winforms_Try_0.pdb
+D:\Workspace\Git-Workspace\C-Sharp\Winforms_Try_0\obj\Debug\netcoreapp3.1\Winforms_Try_0.genruntimeconfig.cache
