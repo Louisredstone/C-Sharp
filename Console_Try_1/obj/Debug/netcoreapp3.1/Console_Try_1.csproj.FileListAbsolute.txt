@@ -1,15 +1,3 @@
-/Users/louis/Workspace/Git-Workspace/C-Sharp/Console_Try_1/bin/Debug/netcoreapp3.1/Console_Try_1.deps.json
-/Users/louis/Workspace/Git-Workspace/C-Sharp/Console_Try_1/bin/Debug/netcoreapp3.1/Console_Try_1.runtimeconfig.json
-/Users/louis/Workspace/Git-Workspace/C-Sharp/Console_Try_1/bin/Debug/netcoreapp3.1/Console_Try_1.runtimeconfig.dev.json
-/Users/louis/Workspace/Git-Workspace/C-Sharp/Console_Try_1/bin/Debug/netcoreapp3.1/Console_Try_1.dll
-/Users/louis/Workspace/Git-Workspace/C-Sharp/Console_Try_1/bin/Debug/netcoreapp3.1/Console_Try_1.pdb
-/Users/louis/Workspace/Git-Workspace/C-Sharp/Console_Try_1/obj/Debug/netcoreapp3.1/Console_Try_1.csprojAssemblyReference.cache
-/Users/louis/Workspace/Git-Workspace/C-Sharp/Console_Try_1/obj/Debug/netcoreapp3.1/Console_Try_1.AssemblyInfoInputs.cache
-/Users/louis/Workspace/Git-Workspace/C-Sharp/Console_Try_1/obj/Debug/netcoreapp3.1/Console_Try_1.AssemblyInfo.cs
-/Users/louis/Workspace/Git-Workspace/C-Sharp/Console_Try_1/obj/Debug/netcoreapp3.1/Console_Try_1.csproj.CoreCompileInputs.cache
-/Users/louis/Workspace/Git-Workspace/C-Sharp/Console_Try_1/obj/Debug/netcoreapp3.1/Console_Try_1.dll
-/Users/louis/Workspace/Git-Workspace/C-Sharp/Console_Try_1/obj/Debug/netcoreapp3.1/Console_Try_1.pdb
-/Users/louis/Workspace/Git-Workspace/C-Sharp/Console_Try_1/obj/Debug/netcoreapp3.1/Console_Try_1.genruntimeconfig.cache
 D:\Workspace\Git-Workspace\C-Sharp\Console_Try_1\bin\Debug\netcoreapp3.1\Console_Try_1.exe
 D:\Workspace\Git-Workspace\C-Sharp\Console_Try_1\bin\Debug\netcoreapp3.1\Console_Try_1.deps.json
 D:\Workspace\Git-Workspace\C-Sharp\Console_Try_1\bin\Debug\netcoreapp3.1\Console_Try_1.runtimeconfig.json
