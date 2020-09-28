@@ -23,9 +23,9 @@ namespace Console_Try_1
             }
         }
 
-        public Sudoku9x9 Clone(){
-            return this.MemberwiseClone() as Sudoku9x9;
-        }
+        // public Sudoku9x9 Clone(){
+        //     return this.MemberwiseClone() as Sudoku9x9;
+        // }
 
         public void show(){
             for(int ro=0;ro<4;++ro){
@@ -56,7 +56,10 @@ namespace Console_Try_1
             for(i=0;i<81;i++){
                 if(this.content[i]==0) break;
             }
-            if (i==81) return 0;//solve successful.-----------------------
+            if (i==81) {
+                this.show();
+                return 0;//solve successful.-----------------------
+            } 
             
             //else, i will be the index of the first empty grid.
             int r=i/9;
@@ -87,17 +90,24 @@ namespace Console_Try_1
             }
             if (valueList.Capacity==0) return 1;//solve failed.-------------
 
-            Sudoku9x9 selfCopy = this.Clone();
+            // Sudoku9x9 selfCopy = new Sudoku9x9();
             foreach(int v in valueList){
+                // selfCopy = this.Clone();
                 //fill the '0' with a value in the value list
-                selfCopy.set(r,c,v);
+                // selfCopy.set(r,c,v);
+                this.set(r,c,v);
+                // Console.Clear();
+                // selfCopy.show();
+                // this.show();
                 //a new sudoku was born! try to solve it.
-                if(selfCopy.solve()==0){
+                if(this.solve()==0){
                     //if it works, then it would be the final answer;
+                    return 0;
                 }
                 else{
-                    //if not, then try another value in the value list.
+                    this.set(r,c,0);
                 }
+                //if not, then try another value in the value list.
             }
 
             return 1;//solve failed.
@@ -126,10 +136,11 @@ namespace Console_Try_1
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            // Console.WriteLine("Hello World!");
             Sudoku9x9 sudoku = new Sudoku9x9();
             sudoku.sample();
             sudoku.show();
+            if(sudoku.solve()==1) Console.WriteLine("Sudoku Error.");
         }
     }
 }
