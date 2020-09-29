@@ -23,10 +23,6 @@ namespace Console_Try_1
             }
         }
 
-        // public Sudoku9x9 Clone(){
-        //     return this.MemberwiseClone() as Sudoku9x9;
-        // }
-
         public void show(){
             for(int ro=0;ro<4;++ro){
                 for(int i=0;i<25;i++){
@@ -92,13 +88,8 @@ namespace Console_Try_1
 
             // Sudoku9x9 selfCopy = new Sudoku9x9();
             foreach(int v in valueList){
-                // selfCopy = this.Clone();
                 //fill the '0' with a value in the value list
-                // selfCopy.set(r,c,v);
                 this.set(r,c,v);
-                // Console.Clear();
-                // selfCopy.show();
-                // this.show();
                 //a new sudoku was born! try to solve it.
                 if(this.solve()==0){
                     //if it works, then it would be the final answer;
@@ -112,7 +103,6 @@ namespace Console_Try_1
 
             return 1;//solve failed.
         }
-
         public void shuffle(){//just for test.
             for(int i=0;i<81;i++){
                 this.content[i]=this.rd.Next(1,10);
