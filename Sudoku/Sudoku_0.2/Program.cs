@@ -101,9 +101,9 @@ namespace Console_Try_1
                 if(this.content[i]==0) break;
             }
             if (i==81) {
-                if(show){
-                    this.show();
-                }
+                // if(show){
+                //     this.show();
+                // }
                 return 1;
                 //solve successful, 1 possibility found.-----------------------
             } 
@@ -122,8 +122,8 @@ namespace Console_Try_1
                 //a new sudoku was born! try to solve it.
                 //different from solve()
                 cnt+=this.solveExh();
-                if (cnt>=ceiling) return cnt;
                 this.set(r,c,0);
+                if (cnt>=ceiling) return cnt;
             }
 
             return cnt;//solve done.
@@ -135,33 +135,54 @@ namespace Console_Try_1
         // }
 
         public void generate(){
+            // ArrayList debug_list=new ArrayList();
+            // for(int i=0;i<20;i++){
+            //     debug_list.Add(i);
+            // }
+            // foreach(var item in randomSort(debug_list,this.rd)){
+            //     Console.WriteLine(item);
+            // }
+
+            int i;
+            int r;
+            int c;
             this.clear();
+            // Console.WriteLine("Generating...");//Debug
             //randomSort
             ArrayList listEmpty=new ArrayList();
             ArrayList listOccup=new ArrayList();
-            for(int i=0;i<81;i++){
-                int r=i/9;
-                int c=i%9;
-                if(this.get(r,c)!=0) listEmpty.Add(i);
+            for(i=0;i<81;i++){
+                r=i/9;
+                c=i%9;
+                if(this.get(r,c)==0) listEmpty.Add(i);
                 else listOccup.Add(i);
             }
-            int index=listOccup.Capacity;
-            ArrayList randomList=randomSort(listOccup,this.rd);
+            int index=listOccup.Count;
+            ArrayList indexList=randomSort(listOccup,this.rd);
             foreach(int item in randomSort(listEmpty,this.rd)){
-                randomList.Add(item);
+                indexList.Add(item);
             }
-            
-            bool flag=true;
-            while(flag){
-                int r=index/9;
-                int c=index%9;
+            // Console.WriteLine("RandomList generated. Count:{0}", indexList.Count);//Debug
+            System.Threading.Thread.Sleep(500);
+
+            while(true){
+                bool flag=false;
+                i=(int)indexList[index];
+                r=i/9;
+                c=i%9;
                 foreach(int item in randomSort(this.getLegalValues(r,c),this.rd)){
+                    // Console.WriteLine("index={0}, (r,c)=({1},{2})",index,r,c);
                     bool flag2=false;
                     this.set(r,c,item);
+                    // System.Threading.Thread.Sleep(200);
+                    // Console.Clear();
+                    // this.show();
                     switch(this.solveExh(show: false)){
                         case 0://conflicting restricts
                         break;
                         case 1://just enough restricts, or could be less. Prune.
+                            flag2=true;
+                            flag=true;
                         break;
                         default://not enough restricts.
                             index++;
@@ -170,7 +191,73 @@ namespace Console_Try_1
                     }
                     if(flag2) break;
                 }
+                if(flag) break;
             }
+            //random prune (not best prune)
+            ArrayList available=new ArrayList();
+            for(int ii=0;ii<81;ii++){
+                if(this.get(ii/9,ii%9)!=0) available.Add(ii);
+            }
+            while(true){
+                if(available.Count==0) break;
+                // System.Threading.Thread.Sleep(200);
+                // Console.Clear();
+                // this.show();
+                // Console.WriteLine("available:{0}",available.Count);
+                int aim=this.rd.Next(available.Count);
+                index=(int)available[aim];
+                r=index/9;
+                c=index%9;
+                int value=this.get(r,c);
+                this.set(r,c,0);
+                switch(this.solveExh()){
+                    case 0://not gonna happen.
+                    break;
+                    case 1:
+                        //do nothing.
+                    break;
+                    default:
+                        this.set(r,c,value);//recover
+                    break;
+                }
+                available.Remove(index);
+            }
+        }
+
+        private int getPruneNum(int r,int c){
+            //获取某格的剪枝潜力
+            int value=this.get(r,c);
+            if(value==0){
+                return 0;
+            }
+            int result=0;
+            this.set(r,c,0);
+            // switch(this.solveExh(show:false)){
+            //     case 0://not gonna happen
+            //         // result=0;
+            //     break;
+            //     case 1:
+            //         result+=1;
+            //         //do something.
+            //     break;
+            //     default:
+            //         //result=0;
+            //     break;
+            // }
+            if(this.solveExh(show:false)==1){
+                result+=1;
+                ArrayList indexList=new ArrayList();
+                for(int i=0;i<81;i++){
+                    if(this.get(i/9,i%9)!=0) indexList.Add(i);
+                }
+                foreach(int index in indexList){
+                    int rr=index/9;
+                    int cc=index%9;
+                    result+=this.getPruneNum(rr,cc);
+                }
+            }
+            this.set(r,c,value);
+            return result;
         }
 
         public ArrayList getLegalValues(int r,int c){
@@ -226,10 +313,23 @@ namespace Console_Try_1
             this.content=(int [])tmp.Clone();
         }
 
+        public void sample2(){//just for test.
+            int[] tmp={   0,0,6,0,0,0,0,0,1,
+                            0,7,0,0,6,0,0,5,0,
+                            8,0,0,1,0,3,2,0,0,
+                            0,0,5,0,4,0,8,0,0,
+                            0,4,0,7,0,2,0,9,0,
+                            0,0,8,0,1,0,7,0,0,
+                            0,0,1,2,0,5,0,0,3,
+                            0,6,0,0,7,0,0,8,0,
+                            2,0,0,0,0,0,4,0,0};
+            this.content=(int [])tmp.Clone();
+        }
+
         ArrayList randomSort(ArrayList input, Random rd){
             ArrayList result=new ArrayList();
-            foreach(var item in input){
-                result.Insert(rd.Next(0,result.Capacity),item);
+            foreach(int item in input){
+                result.Insert(rd.Next(0,result.Count),item);
             }
             return result;
         }
@@ -241,9 +341,12 @@ namespace Console_Try_1
         {
             // Console.WriteLine("Hello World!");
             Sudoku9x9 sudoku = new Sudoku9x9();
-            sudoku.sample();
-            sudoku.show();
-            if(sudoku.solveExh()>1) Console.WriteLine("Sudoku Error.");
+            // sudoku.generate();
+            // sudoku.clear();
+            // sudoku.set(5,1,6);
+            // Console.WriteLine(sudoku.solveExh(show:false));
+            // sudoku.show();
+            sudoku.generate();
             sudoku.show();
         }
     }
